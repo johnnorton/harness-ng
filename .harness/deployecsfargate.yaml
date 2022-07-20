@@ -22,5 +22,8 @@ pipeline:
                                     method: GET
                                     headers: []
                                     outputVariables: []
+                                    delegateSelectors:
+                                        - eks
                                 timeout: 10s
+                                failureStrategies: []
               tags: {}

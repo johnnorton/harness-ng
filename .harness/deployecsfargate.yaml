@@ -1,0 +1,26 @@
+pipeline:
+    name: deploy-ecs-fargate
+    identifier: deployecsfargate
+    projectIdentifier: QuarkusRest
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: custcom
+              identifier: custcom
+              description: ""
+              type: Custom
+              spec:
+                  execution:
+                      steps:
+                          - step:
+                                type: Http
+                                name: google
+                                identifier: google
+                                spec:
+                                    url: https://www.google.com
+                                    method: GET
+                                    headers: []
+                                    outputVariables: []
+                                timeout: 10s
+              tags: {}

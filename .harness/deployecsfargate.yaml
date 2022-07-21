@@ -75,3 +75,36 @@ pipeline:
                                           executionTarget: {}
                                       timeout: 10m
               tags: {}
+        - stage:
+              name: Build Project
+              identifier: Build_Project
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: EKS
+                          namespace: harness-ci
+                          automountServiceAccountToken: true
+                          nodeSelector: {}
+                          os: Linux
+                  execution:
+                      steps:
+                          - step:
+                                type: BuildAndPushECR
+                                name: quarkus-rest
+                                identifier: quarkusrest
+                                spec:
+                                    connectorRef: AWS
+                                    region: us-east-1
+                                    account: "915632791698"
+                                    imageName: quarkus-rest
+                                    tags:
+                                        - latest
+    properties:
+        ci:
+            codebase:
+                connectorRef: account.johnnorton
+                repoName: quarkus-rest
+                build: <+input>

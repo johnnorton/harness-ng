@@ -6,68 +6,78 @@ pipeline:
     tags: {}
     stages:
         - stage:
-              name: custcom
+              name: custom
               identifier: custcom
               description: ""
               type: Custom
               spec:
                   execution:
                       steps:
-                          - step:
-                                type: Http
-                                name: google
-                                identifier: google
-                                spec:
-                                    url: https://www.google.com
-                                    method: GET
-                                    headers: []
-                                    outputVariables: []
-                                timeout: 10s
-                                failureStrategies: []
-                          - stepGroup:
-                                name: Step Group 1
-                                identifier: Step_Group_1
-                                steps:
-                                    - parallel:
-                                          - step:
-                                                type: ShellScript
-                                                name: Script 1
-                                                identifier: Script_1
-                                                spec:
-                                                    shell: Bash
-                                                    onDelegate: true
-                                                    source:
-                                                        type: Inline
-                                                        spec:
-                                                            script: ls -la
-                                                    environmentVariables: []
-                                                    outputVariables: []
-                                                    executionTarget: {}
-                                                timeout: 10m
-                                          - step:
-                                                type: ShellScript
-                                                name: Script 2
-                                                identifier: Script_2
-                                                spec:
-                                                    shell: Bash
-                                                    onDelegate: true
-                                                    source:
-                                                        type: Inline
-                                                        spec:
-                                                            script: ps -efx
-                                                    environmentVariables: []
-                                                    outputVariables: []
-                                                    executionTarget: {}
-                                                timeout: 10m
-                                failureStrategies: []
-                          - step:
-                                type: Http
-                                name: harness
-                                identifier: harness
-                                spec:
-                                    url: https://www.harness.io
-                                    method: GET
-                                    headers: []
-                                    outputVariables: []
-                                timeout: 10s
+                          - parallel:
+                                - step:
+                                      type: Http
+                                      name: harness
+                                      identifier: harness
+                                      spec:
+                                          url: https://www.harness.io
+                                          method: GET
+                                          headers: []
+                                          outputVariables: []
+                                      timeout: 10s
+                                - step:
+                                      type: ShellScript
+                                      name: Script 3
+                                      identifier: Script_3
+                                      spec:
+                                          shell: Bash
+                                          onDelegate: true
+                                          source:
+                                              type: Inline
+                                              spec:
+                                                  script: ls -lah
+                                          environmentVariables: []
+                                          outputVariables: []
+                                          executionTarget: {}
+                                      timeout: 10m
+                                - step:
+                                      type: Http
+                                      name: google
+                                      identifier: google
+                                      spec:
+                                          url: https://www.google.com
+                                          method: GET
+                                          headers: []
+                                          outputVariables: []
+                                      timeout: 10s
+                                      failureStrategies: []
+                                - step:
+                                      type: ShellScript
+                                      name: Script 1
+                                      identifier: Script_1
+                                      spec:
+                                          shell: Bash
+                                          onDelegate: true
+                                          source:
+                                              type: Inline
+                                              spec:
+                                                  script: ls -la
+                                          environmentVariables: []
+                                          outputVariables: []
+                                          executionTarget: {}
+                                      timeout: 10m
+                                - step:
+                                      type: ShellScript
+                                      name: Script 2
+                                      identifier: Script_2
+                                      spec:
+                                          shell: Bash
+                                          onDelegate: true
+                                          source:
+                                              type: Inline
+                                              spec:
+                                                  script: ps -efx
+                                          environmentVariables: []
+                                          outputVariables: []
+                                          executionTarget: {}
+                                      timeout: 10m
               tags: {}

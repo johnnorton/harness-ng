@@ -34,7 +34,6 @@ pipeline:
                   identifier: step123
                   template:
                     templateRef: Template_Step_123
-                    versionLabel: v1
           infrastructure:
             type: KubernetesDirect
             spec:

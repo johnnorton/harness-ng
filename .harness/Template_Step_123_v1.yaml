@@ -12,4 +12,4 @@ template:
       connectorRef: account.harnessImage
       image: ubi
       shell: Sh
-      command: echo "hello"
+      command: echo "hello 123"

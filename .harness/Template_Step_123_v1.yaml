@@ -1,0 +1,15 @@
+template:
+  name: Template Step 123
+  identifier: Template_Step_123
+  versionLabel: v1
+  type: Step
+  projectIdentifier: GitX
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Run
+    spec:
+      connectorRef: account.harnessImage
+      image: ubi
+      shell: Sh
+      command: echo "hello"

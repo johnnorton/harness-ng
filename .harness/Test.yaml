@@ -1,14 +1,14 @@
 pipeline:
   name: Test
   identifier: Test
-  projectIdentifier: GitXX
+  projectIdentifier: GitX
   orgIdentifier: default
   tags: {}
   stages:
     - stage:
         name: test
         identifier: test
-        description: "desc"
+        description: desc123
         type: Custom
         spec:
           execution:

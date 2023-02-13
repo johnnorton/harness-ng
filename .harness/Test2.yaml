@@ -20,3 +20,31 @@ pipeline:
                   spec:
                     duration: 14m
         tags: {}
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  name: step123
+                  identifier: step123
+                  template:
+                    templateRef: Template_Step_123
+                    versionLabel: v1
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.Local
+              namespace: default
+              nodeSelector: {}
+              os: Linux
+  properties:
+    ci:
+      codebase:
+        connectorRef: <+input>
+        repoName: <+input>
+        build: <+input>

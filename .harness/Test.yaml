@@ -8,7 +8,7 @@ pipeline:
     - stage:
         name: test
         identifier: test
-        description: desc123
+        description: descnew
         type: Custom
         spec:
           execution:
@@ -23,7 +23,7 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo "hello bracnch"
+                        script: echo "hello bracnch 123"
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
